@@ -1,0 +1,18 @@
+main{
+    padding: 24px;
+    background-color: rgb(180, 196, 196);
+    min-height: 10px;
+}
+
+div{
+    padding: 24px;
+    background-color: rebeccapurple;
+    min-height: 10px;
+    width: 50%;
+}
+h3,p{
+    color: aliceblue;
+    flex: content;
+    
+}
+

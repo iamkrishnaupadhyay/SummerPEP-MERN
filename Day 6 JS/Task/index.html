@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration From</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form onsubmit="form(event)">
+        <h2>Registration Form</h2>
+        Enter Name<br>
+        <input type="text" onchange="name(event)" placeholder="Enter your name"><br>
+        Enter Username<br>
+        <input type="text" onchange="username(event)" placeholder="Enter your username"><br>
+        Enter Email<br>
+        <input type="email" onchange="email(event)" placeholder="Enter your email"><br>
+        Enter Age<br>
+        <input type="number" onchange="age(event)" placeholder="Enter your age"><br>
+        Enter Phone Number<br>
+        <input type="tel" onchange="number(event)" placeholder="Enter your phone number"><br>
+        <button type="submit">Submit</button>
+    </form>
+<div id="root" class="card">
+
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

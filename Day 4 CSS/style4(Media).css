@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.parent{
+    padding: 30px;
+    background-color: blueviolet;
+}
+.child{
+    padding: 30px;
+    background-color: aqua;
+}
+@media only screen and (max-width: 600px) {
+    body {
+    background-color: lightblue;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .parent{
+    background-color: rgb(205, 50, 50);
+    }
+}
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: yellow;
+    padding: 50px;
+    font-size: 20px;
+  }
