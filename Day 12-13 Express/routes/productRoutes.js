@@ -7,7 +7,7 @@ const {
     deleteProducts,
     validateForTitleAndPrice,
     getDataMiddleware,
-} = require("./../Controllers/products.js");
+} = require("../Controllers/products.js");
 
 const productRouter = express.Router();
 
