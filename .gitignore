@@ -1,3 +1,6 @@
+.DS_Store
+nature.mp4
 node_modules
 .env
-.vscode
+dist
+.parcel-cache
