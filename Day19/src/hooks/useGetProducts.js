@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import AppContext from "../context/appContext";
+import { useContext } from "react"
 
-const useGetProducts = (searchText = "") => {
+const useGetProducts = () => {
+    const { searchText } = useContext(AppContext);
     const [products, setProducts] = useState([]);
 
     async function getData() {

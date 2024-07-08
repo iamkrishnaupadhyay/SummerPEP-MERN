@@ -5,6 +5,8 @@ import HomePage from "./src/pages/homePage";
 import SearchPage from "./src/pages/amazonSearchPage";
 import { useState } from "react";
 import ProductInfo from "./src/pages/productInfo";
+import AppContext from "./src/context/appContext";
+
 
 const parent = document.getElementById("root");
 const root = ReactDOM.createRoot(parent);
@@ -120,23 +122,31 @@ const App = () => {
             path: "/",
             element: (
                 <HomePage
-                    searchText={searchText}
-                    setSearchText={setSearchText}
                     productInfoCards={productInfoCards}
-                    categories={categories}
                 />
             ),
         },
         {
             path: "/search",
-            element: <SearchPage searchText={searchText} setSearchText={setSearchText} categories={categories} />,
+            element: <SearchPage searchText={searchText}
+                setSearchText={setSearchText}
+                categories={categories} />,
         },
         {
             path: "/search/:id",
             element: <ProductInfo />,
         },
     ]);
-    return <RouterProvider router={router} />;
+
+    const contextValue = {
+        categories,
+        searchText,
+        setSearchText,
+    };
+
+    return <AppContext.Provider value={contextValue}>
+        <RouterProvider router={router} />;
+    </AppContext.Provider>
 };
 
 root.render(<App />);
