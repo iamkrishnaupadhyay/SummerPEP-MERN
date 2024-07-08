@@ -1,18 +1,35 @@
-
 import { IoSearchSharp } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import ProductInfoCard from "../components/productInfoCard";
 import Navbar from "../components/navbar";
 import CategoryBar from "../components/categoryBar";
 import { useNavigate } from "react-router-dom";
+import useGetProducts from "../hooks/useGetProducts";
 
 const HomePage = (props) => {
     const { productInfoCards, categories, setSearchText } = props;
     const navigate = useNavigate();
 
+    const products = useGetProducts();
+
+    let cnt = 0;
+    const reqLength = 16;
+    const filteredProducts = products.filter((elem, idx) => {
+        if (Math.random() >= 0.5 || reqLength - cnt === products.length - idx) {
+            if (cnt < reqLength) {
+                cnt++;
+                return true;
+            } else return false;
+        } else return false;
+    });
+
+    console.log("\n✅ : filteredProducts:", filteredProducts);
+
     const openSearchPage = () => {
         navigate("/search");
     };
+
+    const dummy = [0, 1, 2, 3];
 
     return (
         <div className="homepage-root-container">
@@ -24,8 +41,8 @@ const HomePage = (props) => {
                     className="carousal-image"
                 />
                 <div className="products-cards-container">
-                    {productInfoCards.map((elem) => {
-                        return <ProductInfoCard data={elem} />;
+                    {dummy.map((elem) => {
+                        return <ProductInfoCard key={elem} data={filteredProducts.slice(elem * 4, elem * 4 + 4)} />;
                     })}
                 </div>
             </div>

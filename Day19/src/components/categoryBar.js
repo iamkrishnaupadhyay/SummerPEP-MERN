@@ -1,6 +1,7 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 
-const CategoryBar = ({ categories }) => {
+const CategoryBar = (props) => {
+    const { categories } = props;
     return (
         <div className="homepage-category-bar">
             <button>
@@ -8,9 +9,9 @@ const CategoryBar = ({ categories }) => {
                 All
             </button>
             <div className="category-items">
-                {categories.map((elem, index) => (
-                    <p key={index}>{elem}</p>
-                ))}
+                {categories.map((elem) => {
+                    return <p key={elem}>{elem}</p>;
+                })}
             </div>
         </div>
     );
