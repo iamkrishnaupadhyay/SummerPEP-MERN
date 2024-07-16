@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/appContext";
-import { useContext } from "react"
 
-const useGetProducts = () => {
+const useGetProducts = (params = {}) => {
+    const { isSearchTextDependent = true } = params;
     const { searchText } = useContext(AppContext);
     const [products, setProducts] = useState([]);
 
-    async function getData() {
-        const res = await fetch(`https://dummyjson.com/products/search?q=${searchText}`);
-        const data = await res.json();
-        setProducts(data.products);
+    async function getData(stx) {
+        try {
+            const res = await fetch(`https://dummyjson.com/products/search?q=${stx}`);
+            const data = await res.json();
+            setProducts(data.products);
+        } catch (e) {
+            alert(JSON.stringify(e));
+        }
     }
 
     useEffect(() => {
-        getData();
+        if (isSearchTextDependent) {
+            getData(searchText);
+        } else {
+            getData("");
+        }
     }, [searchText]);
 
     return products;

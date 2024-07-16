@@ -1,17 +1,16 @@
-import { IoSearchSharp } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
 import ProductInfoCard from "../components/productInfoCard";
 import Navbar from "../components/navbar";
 import CategoryBar from "../components/categoryBar";
 import { useNavigate } from "react-router-dom";
 import useGetProducts from "../hooks/useGetProducts";
-import { useContext } from "react"
 
 const HomePage = () => {
-
     const navigate = useNavigate();
+    const openSearchPage = () => {
+        navigate("/search");
+    };
 
-    const products = useGetProducts();
+    const products = useGetProducts({ isSearchTextDependent: false });
 
     let cnt = 0;
     const reqLength = 16;
@@ -23,15 +22,7 @@ const HomePage = () => {
             } else return false;
         } else return false;
     });
-
-    console.log("\n✅ : filteredProducts:", filteredProducts);
-
-    const openSearchPage = () => {
-        navigate("/search");
-    };
-
-    const dummy = [0, 1, 2, 3];
-
+    const dummy = [0, 1, 2, 3]; // [...Array(4).keys()]
     return (
         <div className="homepage-root-container">
             <Navbar openSearchPage={openSearchPage} />

@@ -1,6 +1,6 @@
+import { useContext } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import AppContext from "../context/appContext";
-import { useContext } from "react"
 
 const CategoryBar = () => {
     const { categories } = useContext(AppContext);
